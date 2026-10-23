@@ -1,0 +1,16 @@
+# Private / generated - never commit
+logs/*
+!logs/.gitkeep
+Reports/*
+!Reports/.gitkeep
+*.pbix
+*.pbit
+*.xlsx
+*.pdf
+*.png
+*.jpg
+!screenshots/*.png
+!screenshots/*.jpg
+shots/
+secrets*
+*.env
