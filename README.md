@@ -18,6 +18,14 @@ I built this project as a beginner, with step-by-step help from Claude (Anthropi
 6. Exports the page to PDF and emails it via Gmail SMTP.
 7. Runs on schedule (Mon-Fri 4:00 PM) with a trading-day gate, a run log and a 4:30 PM watchdog that emails an alert if nothing was sent.
 
+## Screenshot
+
+![Dashboard (illustrative mock-up with dummy data)](Screenshots/dashboard_demo_mockup.png)
+
+*This image is an **illustrative mock-up** with fictional stocks and dummy numbers, drawn to show the layout of the real dashboard. It is not a screenshot of the live report.*
+
+**Privacy disclaimer:** Screenshots and sample datasets may contain dummy or anonymized data for demonstration purposes. Actual personal portfolio holdings and sensitive information have been omitted for privacy. Demonstration results may differ from actual results.
+
 ## Architecture
 
 ```
@@ -39,11 +47,11 @@ Daily flow inside Power Automate Desktop: log start -> gate (weekend / NSE holid
 
 | Path | Purpose |
 |---|---|
-| `scripts/` | PowerShell used by Task Scheduler and the PAD flow (placeholders for private values) |
-| `data/NSE_Holidays_2026.csv` | NSE trading holidays used by the gate |
-| `screenshots/` | Dashboard and automation screenshots (demo/blurred data only) |
-| `docs/AUTOMATION.md` | Setup steps for scheduling, credentials and the PAD flow |
-| `docs/TROUBLESHOOTING.md` | Problems met and their fixes |
+| `Scripts/` | PowerShell used by Task Scheduler and the PAD flow (placeholders for private values) |
+| `Data/NSE_Holidays_2026.csv` | NSE trading holidays used by the gate |
+| `Screenshots/` | Dashboard and automation screenshots (demo/blurred data only) |
+| `Docs/AUTOMATION.md` | Setup steps for scheduling, credentials and the PAD flow |
+| `Docs/TROUBLESHOOTING.md` | Problems met and their fixes |
 | `logs/`, `Reports/` | Created at runtime, git-ignored |
 
 The Excel model, Power BI files and flow definitions are not included because they contain real holdings.
@@ -67,6 +75,23 @@ The Excel model, Power BI files and flow definitions are not included because th
 - Holidays are a static 2026 list; Muhurat (special weekend) sessions are not handled.
 - PAD free tier cannot schedule flows, hence Task Scheduler.
 
+## What this project demonstrates
+
+- Cleaning and validating a broker export with Power Query, and calculating portfolio metrics (P&L, return, allocation, concentration).
+- A one-page Power BI dashboard with conditional formatting and alert logic.
+- End-to-end automation with free tools: Excel refresh, PDF export, email, scheduling, a run log and a failure watchdog.
+- Practical engineering habits: duplicate-send guards, holiday handling, secrets kept out of code, and honest documentation of limitations.
+
+## What I learned
+
+- Keyboard-driven UI automation is fragile; opening a saved template was far more reliable than automating a Refresh button.
+- Logs and small checks (gate, duplicate guard, watchdog) matter more than the "happy path".
+- Keep secrets in environment variables, and test each step by hand before scheduling it.
+
+## How to view or run
+
+The repository holds the scripts and documentation only. The Excel model, Power BI files and flow definitions are not included because they contain real holdings, so the pipeline cannot be run from this repo as it stands. To rebuild it, follow `Docs/AUTOMATION.md` with your own holdings export, price sheet and Gmail app password.
+
 ## Setup
 
-See `docs/AUTOMATION.md`.
+See `Docs/AUTOMATION.md`.
