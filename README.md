@@ -57,18 +57,6 @@ Task Scheduler 4:30 PM -> Check_Daily_Report.ps1 (watchdog)
 
 Daily flow inside Power Automate Desktop: log start -> gate (weekend / NSE holiday / too early / already sent / trading) -> refresh Excel -> open Power BI template -> keyboard export to PDF -> copy PDF from `%TEMP%` -> close Power BI -> email -> log `SENT_OK`.
 
-## Repository layout
-
-| Path | Purpose |
-|---|---|
-| `Scripts/` | PowerShell used by Task Scheduler and the PAD flow (placeholders for private values) |
-| `Data/NSE_Holidays_2026.csv` | NSE trading holidays used by the gate |
-| `Screenshots/` | Dashboard and automation screenshots (demo/blurred data only) |
-| `Docs/AUTOMATION.md` | Setup steps for scheduling, credentials and the PAD flow |
-| `Docs/TROUBLESHOOTING.md` | Problems met and their fixes |
-| `logs/`, `Reports/` | Created at runtime, git-ignored |
-
-The Excel model, Power BI files and flow definitions are not included because they contain real holdings.
 
 ## Security
 
@@ -80,7 +68,6 @@ The Excel model, Power BI files and flow definitions are not included because th
 
 - Prices come from Google's `GOOGLEFINANCE`: delayed, not a licensed feed. Check Google's terms; for personal use only.
 - Average cost is rounded in the broker export, so P&L is approximate.
-- A holdings row with a blank symbol is silently dropped.
 - Power BI Desktop has no command-line export, so the PDF step uses keyboard automation (Alt, F, Enter, Down x7...). It can break if Power BI's menus change.
 - Editing the dashboard means re-exporting the `.pbit` template, otherwise the flow keeps using the old design.
 - `Send-MailMessage` is obsolete but works with Gmail SMTP; the PAD built-in email action did not.
