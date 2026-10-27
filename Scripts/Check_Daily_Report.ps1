@@ -18,6 +18,8 @@ try {
     $cred = New-Object System.Management.Automation.PSCredential('<YOUR_EMAIL>',$pw)
     $body = "Today's portfolio report did not go out.`r`n`r`nToday's log lines:`r`n" + ($lines -join "`r`n")
     Send-MailMessage -From 'Portfolio Monitor <<YOUR_EMAIL>>' -To '<YOUR_EMAIL>' -Subject ('ALERT: portfolio report missing ' + $today) -Body $body -SmtpServer smtp.gmail.com -Port 587 -UseSsl -Credential $cred
+  } else {
+    Get-Process 'PAD.Console.Host' -ErrorAction SilentlyContinue | Where-Object { $_.MainWindowHandle -ne 0 } | ForEach-Object { [void]$_.CloseMainWindow() }
   }
 } catch {
   Write-Output ('FAILED: ' + $_.Exception.Message)
