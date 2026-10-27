@@ -32,11 +32,11 @@ All images below are **illustrations made with dummy data and fictional stocks**
 
 **3. Power BI dashboard** (illustrative mock-up of the real one-page layout, dark theme)
 
-![Dashboard, illustrative mock-up](Screenshots/dashboard_demo_mockup.png(1)
+![Dashboard, illustrative mock-up]![Dashboard](<Screenshots/dashboard_demo_mockup (1).png>)
 
 **4. Automation flow** (diagram of the real steps, not a Power Automate screenshot)
 
-![Automation flow diagram](Screenshots/04_automation_flow_diagram.png(1)
+![Automation flow diagram]![Automation flow](<Screenshots/04_automation_flow_diagram (1).png>)
 
 **Privacy disclaimer:** Screenshots and sample datasets may contain dummy or anonymized data for demonstration purposes. Actual personal portfolio holdings and sensitive information have been omitted for privacy. Demonstration results may differ from actual results.
 
